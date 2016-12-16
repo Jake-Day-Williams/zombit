@@ -1,0 +1,37 @@
+How to build a reddit clone with Ruby on Rails that includes sorting by vote rank and nested comments.
+
+Let's start by creating a new Ruby on Rail application.
+
+I'm using rails 5.0.0.1 for this tutorial. I recommend using the same version but it's not required.
+
+You can check your rails version with <code class="lang-bash">$ rails -v</code>
+You can list all your locally installed versions of rails with <code class="lang-bash">$ gem list ^rails$</code>
+To install a specific version of rails: <code class="lang-bash"> $ gem install rails --version=5.0.0.1</code>
+When creating a new rails app we can specify which version to use.
+<code class="lang-bash">$ rails _5.0.0.1_ new reddit_clone
+create
+create  README.md
+create  Rakefile
+create  config.ru
+create  .gitignore
+create  Gemfile
+create  app
+# lots of stuff here.
+.........
+......
+...
+Bundle complete! 15 Gemfile dependencies, 62 gems now installed.
+Use `bundle show [gemname]` to see where a bundled gem is installed.
+run  bundle exec spring binstub --all
+* bin/rake: spring inserted
+* bin/rails: spring inserted
+$
+</code></pre>
+
+Change into your new app. <code class="lang-bash">$ cd reddit_clone</code>
+Initialize git. <code class="lang-bash">$ git init</code>
+Add everything to git. <code class="lang-bash">$ git add .</code>
+Commit to git. <code class="lang-bash">$ git commit -m "Initial commit"</code>
+Start the rails server. <code class="lang-bash">$ rails s</code>
+Open your browser and visit localhost:3000 You should see the following.
+
