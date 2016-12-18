@@ -1,0 +1,6 @@
+- @posts.each do |post|
+  .col-xs-12
+    - if post.url?
+      = link_to post.title, post.url
+    - else
+      = link_to post.title, post
