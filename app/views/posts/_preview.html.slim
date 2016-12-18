@@ -2,13 +2,13 @@
   .title
     - if post.url?
       = link_to post.title, post.url
-      %span.links
+      span.links
         = link_to "(#{URI.parse(post.url).host.sub(/\Awww\./, '')})", post.url
     - else
       = link_to post.title, post
-      %span.links
+      span.links
         = "(subreddit)"
   .info
-    submitted #{time_ago_in_words(post.created_at)} ago by
+    | submitted #{time_ago_in_words(post.created_at)} ago by
   .links
     = link_to "comments", post
