@@ -3,7 +3,7 @@
     - if post.url?
       = link_to post.title, post.url
       %span.links
-        = "(#{URI.parse(post.url).host.sub(/\Awww\./, '')})"
+        = link_to "(#{URI.parse(post.url).host.sub(/\Awww\./, '')})", post.url
     - else
       = link_to post.title, post
       %span.links
