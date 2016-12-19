@@ -10,8 +10,13 @@ html
   body
     nav.navbar.navbar-default
     .container-fluid
+      - flash.each do |name, msg|
+        = content_tag :div, msg, class: "alert alert-info"
       .row
         .col-md-9
           = yield
         .col-md-3.side-bar
           = yield(:side_bar)
+
+          <p class="notice"><%= notice %></p>
+          <p class="alert"><%= alert %></p>
