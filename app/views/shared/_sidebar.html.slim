@@ -1,21 +1,27 @@
-- if user_signed_in?
-  = current_user.username 
-  '  |
-  | inbox
-  '  |
-  | preferences
-  '  |
-  = link_to "logout", destroy_user_session_path, :method => :delete
-- else
- .form
-  .form-group-sm
-    = bootstrap_form_for(:user, :url => session_path(:user), layout: :inline) do |f|
-      = f.text_field :login, hide_label: true, placeholder: "username or email"
-      = f.password_field :password, hide_label: true, placeholder: "password"
-      br
-      = f.submit 'login', class: "btn btn-primary btn-xs"
-      '  
-      = f.check_box :remember_me
-      '  
-      = link_to "reset password", new_password_path(:user)
-      
+.panel.panel-default
+  - if user_signed_in?
+    .panel-heading
+      = current_user.username 
+      '  |
+      | current_user
+      '  |
+      | preferences
+      '  |
+      = link_to 'logout', destroy_user_session_path, :method => :delete 
+    .panel-body
+      | Submit new post 
+  - else
+   .panel-heading
+     ' Want to join? 
+     = link_to 'Sign Up', new_user_registration_path
+     '  in seconds.
+   .panel-body
+     .form
+       .form-group-sm          
+        = bootstrap_form_for(:user, :url => session_path(:user)) do |f|
+          = f.text_field :login, hide_label: true, placeholder: "username or email"
+          = f.password_field :password, hide_label: true, placeholder: "password"
+          = f.submit 'log in', class: "btn btn-primary btn-xs"
+          = f.check_box :remember_me
+          = link_to "reset password", new_password_path(:user)
+          
