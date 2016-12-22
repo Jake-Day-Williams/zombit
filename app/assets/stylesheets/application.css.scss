@@ -14,3 +14,17 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "posts.scss";
+
+.sidebar {
+width: 300px;
+float: right;
+}
+.main-content {
+position: relative;
+min-height: 100%;
+
+}
+
+.row {
+  padding: 5px;
+}
