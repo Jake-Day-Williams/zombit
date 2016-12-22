@@ -8,7 +8,12 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 
   body
-    nav.navbar.navbar-default
+    .navbar.navbar-default
+      .container-fluid
+        .navbar-header      
+          = image_tag("zombit.png")
+          = link_to "zombit", "/", class: "h2"
+
     .container-fluid
       - flash.each do |name, msg|
         = content_tag :div, msg, class: "alert alert-info"
