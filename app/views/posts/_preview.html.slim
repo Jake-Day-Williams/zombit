@@ -1,14 +1,22 @@
 .post
-  .title
-    - if post.url?
-      = link_to post.title, post.url
-      span.links<
-        = link_to "(#{URI.parse(post.url).host.sub(/\Awww\./, '')})", post.url
-    - else
-      = link_to post.title, post
-      span.links<
-        = "(subreddit)"
-  .info
-    | submitted #{time_ago_in_words(post.created_at)} ago by
-  .links
-    = link_to "comments", post
+  .list-inline
+    li
+      .thumbnail
+        - if post.url?
+          - object = LinkThumbnailer.generate(post.url)
+          - if object.images.any? 
+            img src = object.images.first.src.to_s    
+    li
+      .title
+        - if post.url?
+          = link_to post.title, post.url
+          span.links<
+            = link_to "(#{URI.parse(post.url).host.sub(/\Awww\./, '')})", post.url
+        - else
+          = link_to post.title, post
+          span.links<
+            = "(subreddit)"
+      .info
+        | submitted #{time_ago_in_words(post.created_at)} ago by
+      .links
+        = link_to "comments", post

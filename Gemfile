@@ -35,6 +35,9 @@ gem "slim-rails"
 gem "html2slim"
 gem 'devise'
 
+# Generate thumbnail images from of the shared url on the post index page.
+gem 'link_thumbnailer'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
