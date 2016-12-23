@@ -18,10 +18,10 @@
    .panel-body
      .form
        .form-group-sm          
-        = bootstrap_form_for(:user, :url => session_path(:user)) do |f|
-          = f.text_field :login, hide_label: true, placeholder: "username or email"
-          = f.password_field :password, hide_label: true, placeholder: "password"
+        = simple_form_for(:user, :url => session_path(:user)) do |f|
+          = f.input :login, label: false, placeholder: "username or email"
+          = f.input :password, label: false, placeholder: "password"
           = f.submit 'log in', class: "btn btn-primary btn-xs"
-          = f.check_box :remember_me
+          = f.input :remember_me, as: :boolean, label: false, inline_label: true
           = link_to "reset password", new_password_path(:user)
           

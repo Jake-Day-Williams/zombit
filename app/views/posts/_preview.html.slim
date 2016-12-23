@@ -22,6 +22,6 @@
           span.links<
             = "(subreddit)"
     .info
-      | submitted #{time_ago_in_words(post.created_at)} ago by
+      | submitted #{time_ago_in_words(post.created_at)} ago by #{post.user.username}
     .links
       = link_to "comments", post
