@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_many :posts
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -17,7 +19,6 @@ class User < ApplicationRecord
       end
     end
 
-
   # USERNAME AND EMAIL VALIDATIONS
   # We need to be very careful with username validation, because there might be conflict between username and email.
   # For example, given these users:
@@ -32,7 +33,6 @@ class User < ApplicationRecord
     :uniqueness => {
       :case_sensitive => false
     }
-
 
   # Only allow letter, number, underscore and punctuation.
   validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true

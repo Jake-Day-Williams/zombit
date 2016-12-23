@@ -9,7 +9,7 @@
       '  |
       = link_to 'logout', destroy_user_session_path, :method => :delete 
     .panel-body
-      | Submit new post 
+      = link_to "Submit new post", new_post_path 
   - else
    .panel-heading
      ' Want to join? 
