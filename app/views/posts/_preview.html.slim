@@ -1,13 +1,18 @@
-.post
-  .list-inline
-    li
-      .thumbnail
-        - if post.url?
-          - object = LinkThumbnailer.generate(post.url)
-          - if object.images.any? 
-            img src = object.images.first.src.to_s    
-    li
-      .title
+.media
+  .media-left
+    - if post.url?
+      a href= post.url        
+        - object = LinkThumbnailer.generate(post.url)
+        - if object.images.any? 
+          img.media-object alt="image" src="#{object.images.first.src.to_s}" 
+        - else 
+          img.media-object alt="image" src="http://www.megaicons.net/static/img/icons_title/8/178/title/debug-external-link-icon.png"         
+    - else 
+      a href= post_path(post)
+        img.media-object alt="image" src="http://www.myiconfinder.com/uploads/iconsets/128-128-8167579fda39e217d8a2da183ad0306e.png"
+  .media-body
+    .title
+      .media-heading
         - if post.url?
           = link_to post.title, post.url
           span.links<
@@ -16,7 +21,7 @@
           = link_to post.title, post
           span.links<
             = "(subreddit)"
-      .info
-        | submitted #{time_ago_in_words(post.created_at)} ago by
-      .links
-        = link_to "comments", post
+    .info
+      | submitted #{time_ago_in_words(post.created_at)} ago by
+    .links
+      = link_to "comments", post
