@@ -37,6 +37,21 @@ class PostsController < ApplicationController
     redirect_to root_path
   end
 
+  def upvote
+    @post = Post.find(params[:id])
+
+    if @post.liked_by(current_user)
+      @post.unliked_by(current_user)
+    else
+      @post.upvote_by(current_user)
+    redirect_to :back
+    end
+  end
+
+  def downvote
+    @post = Post.find(params[:id])
+    @post.downvote_by(current_user)
+  end
 
   private
 

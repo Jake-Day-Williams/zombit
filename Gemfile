@@ -35,6 +35,9 @@ gem "html2slim"
 gem 'devise'
 gem 'simple_form'
 
+# Adds voting to models.
+gem 'acts_as_votable', '~> 0.10.0'
+
 # Generate thumbnail images from of the shared url on the post index page.
 gem 'link_thumbnailer'
 
