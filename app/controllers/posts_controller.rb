@@ -1,8 +1,9 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :find_post, only: [:show, :edit, :update, :destroy]
 
   def index
-    @posts = Post.all
+    @posts = Post.all.order('cached_votes_score desc')
   end
 
   def show
@@ -39,18 +40,22 @@ class PostsController < ApplicationController
 
   def upvote
     @post = Post.find(params[:id])
-
-    if @post.liked_by(current_user)
-      @post.unliked_by(current_user)
+    if current_user.voted_up_on? @post
+      @post.unliked_by current_user
     else
-      @post.upvote_by(current_user)
-    redirect_to :back
+      @post.liked_by current_user
     end
+    redirect_to :back
   end
 
   def downvote
     @post = Post.find(params[:id])
-    @post.downvote_by(current_user)
+    if current_user.voted_down_on? @post
+      @post.undisliked_by current_user
+    else
+      @post.disliked_by current_user
+    end
+    redirect_to :back
   end
 
   private
