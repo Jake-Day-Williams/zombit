@@ -1,5 +1,13 @@
 .media
   .media-left
+    = link_to like_post_path(post), method: :put, class: "glyphicon glyphicon-menu-up" do
+    - end
+    br
+    = post.cached_votes_up
+    br
+    = link_to dislike_post_path(post), method: :put, class "glyphicon glyphicon-menu-down" do 
+    - end
+    
     - if post.url?
       a href= post.url        
         - object = LinkThumbnailer.generate(post.url)
