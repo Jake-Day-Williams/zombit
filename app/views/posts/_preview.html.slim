@@ -1,10 +1,16 @@
 .block
   .vote-box
-    = link_to like_post_path(post), method: :put, class: "glyphicon glyphicon-menu-up" do
-    br
+    - if current_user.voted_up_on? post
+      = link_to like_post_path(post), method: :put, remote: true, class: "glyphicon glyphicon-chevron-up up-vote" do
+    - else
+      = link_to like_post_path(post), method: :put, class: "glyphicon glyphicon-chevron-up no-vote" do
+    br  
     = post.cached_votes_score
     br
-    = link_to dislike_post_path(post), method: :put, class: "glyphicon glyphicon-menu-down" do 
+    - if current_user.voted_down_on? post
+      = link_to dislike_post_path(post), method: :put, class: "glyphicon glyphicon-chevron-down down-vote" do 
+    - else
+      = link_to dislike_post_path(post), method: :put, class: "glyphicon glyphicon-chevron-down no-vote" do 
   .media
     .media-left
       - if post.url?
@@ -20,14 +26,15 @@
     .media-body
       .title
         .media-heading
-          - if post.url?
-            = link_to post.title, post.url
-            span.links<
-              = link_to "(#{URI.parse(post.url).host.sub(/\Awww\./, '')})", post.url
-          - else
-            = link_to post.title, post
-            span.links<
-              = "(subreddit)"
+          #link-heading
+            - if post.url?
+              = link_to post.title, post.url
+              span.links<
+                = link_to "(#{URI.parse(post.url).host.sub(/\Awww\./, '')})", post.url
+            - else
+              = link_to post.title, post
+              span.links<
+                = "(subreddit)"
       .info
         | submitted #{time_ago_in_words(post.created_at)} ago by #{post.user.username}
       .links
