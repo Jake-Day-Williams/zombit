@@ -1,16 +1,23 @@
 .block
   .vote-box
-    - if current_user.voted_up_on? post
-      = link_to like_post_path(post), method: :put, remote: true, class: "glyphicon glyphicon-chevron-up up-vote" do
+    - if user_signed_in?
+      - if current_user.voted_up_on? post
+        = link_to like_post_path(post), method: :put, remote: true, class: "glyphicon glyphicon-chevron-up up-vote" do
+      - else
+        = link_to like_post_path(post), method: :put, class: "glyphicon glyphicon-chevron-up no-vote" do
+      br  
+      = post.cached_votes_score
+      br
+      - if current_user.voted_down_on? post
+        = link_to dislike_post_path(post), method: :put, class: "glyphicon glyphicon-chevron-down down-vote" do 
+      - else
+        = link_to dislike_post_path(post), method: :put, class: "glyphicon glyphicon-chevron-down no-vote" do
     - else
-      = link_to like_post_path(post), method: :put, class: "glyphicon glyphicon-chevron-up no-vote" do
-    br  
-    = post.cached_votes_score
-    br
-    - if current_user.voted_down_on? post
-      = link_to dislike_post_path(post), method: :put, class: "glyphicon glyphicon-chevron-down down-vote" do 
-    - else
-      = link_to dislike_post_path(post), method: :put, class: "glyphicon glyphicon-chevron-down no-vote" do 
+      = link_to new_user_registration_path, class: "glyphicon glyphicon-chevron-up no-vote" do
+      br  
+      = post.cached_votes_score
+      br
+      = link_to new_user_registration_path, class: "glyphicon glyphicon-chevron-down no-vote" do   
   .media
     .media-left
       - if post.url?

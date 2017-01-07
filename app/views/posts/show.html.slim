@@ -4,5 +4,11 @@
   .panel-body
     .body
       = @post.body
-      
-      
+.h4 Top Comments
+
+- if user_signed_in?
+  = form_for [@post, Comment.new] do |f|
+    = f.text_area :body
+    = f.submit "save"
+- else
+  ' You need to #{link_to "login", new_user_session_path} or #{link_to "signup", new_user_registration_path} to comment.
