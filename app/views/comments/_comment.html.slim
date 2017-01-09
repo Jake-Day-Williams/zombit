@@ -1,7 +1,8 @@
 li
+  | #{comment.user.username} comment.points #{time_ago_in_words(comment.created_at)} ago
+  br
   = comment.body
   .info
-    | submitted #{time_ago_in_words(comment.created_at)} ago by #{comment.user.username}
   - if user_signed_in?
     .reply-button
       | reply  
