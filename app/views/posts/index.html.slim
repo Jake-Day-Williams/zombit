@@ -1,2 +1,4 @@
 - @posts.each do |post|
   = render 'preview', post: post
+.pagination_button
+  = will_paginate @posts, page_links: false, previous_label: "< prev", next_label: "next >"

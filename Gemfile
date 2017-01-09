@@ -30,16 +30,21 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+
+# Use slim instead of erb for views
 gem "slim-rails"
+# Convert already existing erb files to slim
 gem "html2slim"
+# For user signup and authentication
 gem 'devise'
+# Better and simpler forms
 gem 'simple_form'
-
-# Adds voting to models.
+# Adds voting to models
 gem 'acts_as_votable', '~> 0.10.0'
-
-# Generate thumbnail images from of the shared url on the post index page.
+# Generate thumbnail images from of the shared url on the post index page
 gem 'link_thumbnailer'
+# Limits the amount of posts per page
+gem 'will_paginate', '~> 3.1.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
