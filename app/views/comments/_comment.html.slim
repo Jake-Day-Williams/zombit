@@ -2,11 +2,14 @@ li
   = comment.body
   .info
     | submitted #{time_ago_in_words(comment.created_at)} ago by #{comment.user.username}
-    - if user_signed_in?
+  - if user_signed_in?
+    .reply-button
+      | reply  
+    .reply-form
       = form_for [comment, Comment.new] do |f|
         = f.text_area :body
         = f.submit "save"
-    - else
-      | You need to #{link_to "login", new_user_session_path} or #{link_to "signup", new_user_registration_path} to comment.
+  - else
+    | You need to #{link_to "login", new_user_session_path} or #{link_to "signup", new_user_registration_path} to comment.
   ul.comment
     = render partial: 'comments/comment', collection: comment.comments
