@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :find_commentable
 
   def new
@@ -27,7 +27,8 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:body)
+    params[:comment][:user_id] = current_user.id
+    params.require(:comment).permit(:body, :user_id)
   end
 
   def find_commentable
