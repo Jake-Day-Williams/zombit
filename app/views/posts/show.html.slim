@@ -11,7 +11,7 @@
     = f.text_area :body
     = f.submit "save"
 - else
-  | You need to #{link_to "login", new_user_session_path} or #{link_to "signup", new_user_registration_path} to comment.
+  | You need to log in or #{link_to "sign up", new_user_registration_path} to comment.
 
 ul.comment
   = render(partial: 'comments/comment', collection: @post.comments)

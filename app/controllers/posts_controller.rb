@@ -4,7 +4,7 @@ class PostsController < ApplicationController
 
   def index
     sorted_posts = Post.all.order('cached_votes_score desc')
-    @posts = sorted_posts.paginate(:page => params[:page], :per_page => 3)
+    @posts = sorted_posts.paginate(:page => params[:page], :per_page => 5)
   end
 
   def show
