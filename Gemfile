@@ -33,8 +33,6 @@ gem 'jbuilder', '~> 2.5'
 
 # Use slim instead of erb for views
 gem "slim-rails"
-# Convert already existing erb files to slim
-gem "html2slim"
 # For user signup and authentication
 gem 'devise'
 # Better and simpler forms
@@ -58,6 +56,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem "better_errors"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

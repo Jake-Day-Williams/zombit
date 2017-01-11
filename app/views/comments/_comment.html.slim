@@ -8,7 +8,9 @@ li
       | reply  
     .reply-form
       = form_for [comment, Comment.new] do |f|
+        = f.hidden_field :post_id, value: @post.id 
         = f.text_area :body
         = f.submit "save"
   ul.comment
       = render partial: 'comments/comment', collection: comment.comments
+      = comment.comments.count
