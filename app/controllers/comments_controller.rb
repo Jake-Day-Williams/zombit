@@ -8,6 +8,13 @@ class CommentsController < ApplicationController
 
   def create
     @comment = @commentable.comments.new comment_params
+
+    if @comment.commentable_type == "Post"
+      @comment.root_post_id = @commentable.id
+    else
+      @comment.root_post_id = @commentable.root_post_id
+    end
+
     if @comment.save
       redirect_to :back, notice: "Comment posted successfully"
     else
@@ -28,7 +35,7 @@ class CommentsController < ApplicationController
 
   def comment_params
     params[:comment][:user_id] = current_user.id
-    params.require(:comment).permit(:body, :user_id)
+    params.require(:comment).permit(:body, :user_id, :root_post_id)
   end
 
   def find_commentable
