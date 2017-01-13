@@ -16,13 +16,10 @@
 //= require turbolinks
 //= require_tree .
 
-$(document).ready(function(){
-  $('.reply-form').hide(); // Initially hide form.
-    $('.reply-button').on('click', function(e){
-      e.preventDefault();
-      $(this).next('.reply-form').toggle(); // Show form on button click
-    });
-
-    
-
+$(document).on('turbolinks:load', function() {
+  $('.reply-form').hide();
+  $('.reply-button').on('click', function(e){
+    e.preventDefault();
+    $(this).next('.reply-form').toggle(); // Show form on button click
+  });
 });
