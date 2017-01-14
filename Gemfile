@@ -42,8 +42,7 @@ gem 'acts_as_votable', '~> 0.10.0'
 # Generate thumbnail images from of the shared url on the post index page
 gem 'link_thumbnailer'
 # Limits the amount of posts per page
-gem 'will_paginate', '~> 3.1.0'
-
+gem 'kaminari'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

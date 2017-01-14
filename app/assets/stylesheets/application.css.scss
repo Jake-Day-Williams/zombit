@@ -18,28 +18,10 @@
 width: 300px;
 float: right;
 }
+
 .main-content {
 position: inherit;
 min-height: 100%;
-
-}
-
-.row {
-  padding: 5px;
-}
-
-.vote-box {
-  text-align: center;
-  border-width: 1px;
-  float: left;
-  height: 65px;
-  padding: .2em;
-  padding-right: .5em;
-
-  a:hover {
-    text-decoration: none;
-  }
-
 }
 
 #link-heading {
@@ -54,8 +36,43 @@ min-height: 100%;
   }
 }
 
+.row {
+  padding: 5px;
+}
+
+.post-rank {
+  text-align: center;
+  color: #c6c6c6;
+  font-size: 1.1em;
+  border-width: 1px;
+  float: left;
+  height: 66px;
+  line-height: 66px;
+  padding: .2em;
+  padding-right: .5em;
+}
+
+.vote-box {
+  text-align: center;
+  color: #c6c6c6;
+  font-weight: bold;
+  border-width: 1px;
+  float: left;
+  height: 66px;
+  line-height: 22px;
+  padding: .2em;
+  padding-right: .5em;
+
+  a:hover {
+    text-decoration: none;
+  }
+
+}
+
+
+
 .no-vote {
-  color: grey;
+  color: #c6c6c6;
 }
 
 .up-vote {

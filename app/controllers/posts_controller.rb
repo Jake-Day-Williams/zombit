@@ -3,8 +3,9 @@ class PostsController < ApplicationController
   before_action :find_post, only: [:show, :edit, :update, :destroy]
 
   def index
-    sorted_posts = Post.all.order('cached_votes_score desc')
-    @posts = sorted_posts.paginate(:page => params[:page], :per_page => 20)
+    sorted_posts = Post.all.order(cached_votes_score: :desc)
+    @per_page = 3
+    @posts = sorted_posts.page(params[:page]).per(@per_page)
   end
 
   def show
