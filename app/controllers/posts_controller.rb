@@ -44,20 +44,24 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     if current_user.voted_up_on? @post
       @post.unliked_by current_user
+      @post.user.decrement!(:post_karma)
     else
       @post.liked_by current_user
+      @post.user.increment!(:post_karma)
     end
-    redirect_to :back
+    redirect_back(fallback_location: root_path)
   end
 
   def downvote
     @post = Post.find(params[:id])
     if current_user.voted_down_on? @post
       @post.undisliked_by current_user
+      @post.user.increment!(:post_karma)
     else
       @post.disliked_by current_user
+      @post.user.decrement!(:post_karma)
     end
-    redirect_to :back
+    redirect_back(fallback_location: root_path)
   end
 
   private

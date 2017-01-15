@@ -47,5 +47,11 @@ class User < ApplicationRecord
     end
   end
 
+  def karma_up
+    karma.increment.where(@post.user_id)
+  end
+
+  def karma_down
+  end
 
 end
