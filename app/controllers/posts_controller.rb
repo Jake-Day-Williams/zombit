@@ -42,7 +42,10 @@ class PostsController < ApplicationController
 
   def upvote
     @post = Post.find(params[:id])
-    if current_user.voted_up_on? @post
+    if current_user.voted_down_on? @post
+      @post.user.increment!(:post_karma, 2)
+      @post.liked_by current_user
+    elsif current_user.voted_up_on? @post
       @post.unliked_by current_user
       @post.user.decrement!(:post_karma)
     else
@@ -54,7 +57,10 @@ class PostsController < ApplicationController
 
   def downvote
     @post = Post.find(params[:id])
-    if current_user.voted_down_on? @post
+    if current_user.voted_up_on? @post
+      @post.user.decrement!(:post_karma, 2)
+      @post.disliked_by current_user
+    elsif current_user.voted_down_on? @post
       @post.undisliked_by current_user
       @post.user.increment!(:post_karma)
     else

@@ -1,7 +1,7 @@
 .panel.panel-default
   - if user_signed_in?
     .panel-heading
-      ' #{current_user.username} | current_user | preferences
+      ' #{current_user.username} | Post Karma: #{current_user.post_karma} | preferences
       = link_to 'logout', destroy_user_session_path, :method => :delete 
     .panel-body
       = link_to "Submit new post", new_post_path 
