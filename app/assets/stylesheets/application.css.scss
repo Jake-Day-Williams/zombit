@@ -24,32 +24,8 @@ position: inherit;
 min-height: 100%;
 }
 
-#link-heading {
-
-  a:hover {
-    text-decoration: none;
-  }
-
-  a:visited {
-  color: #593271;
-  transition: 0.5s;
-  }
-}
-
 .row {
   padding: 5px;
-}
-
-.post-rank {
-  text-align: center;
-  color: #c6c6c6;
-  font-size: 1.1em;
-  border-width: 1px;
-  float: left;
-  height: 66px;
-  line-height: 66px;
-  padding: .2em;
-  padding-right: .5em;
 }
 
 .vote-box {
@@ -62,26 +38,30 @@ min-height: 100%;
   line-height: 22px;
   padding: .2em;
   padding-right: .5em;
+  text-decoration: none;
 
   a:hover {
-    text-decoration: none;
+    text-decoration: inherit;
   }
 
+  a:focus {
+    text-decoration: inherit;
+  }
+
+  .no-vote {
+    color: inherit;
+  }
+
+  .up-vote {
+    color: #FC3D20;
+  }
+
+  .down-vote {
+    color: #5392F1;
+  }
 }
 
 
-
-.no-vote {
-  color: #c6c6c6;
-}
-
-.up-vote {
-  color: #FC3D20;
-}
-
-.down-vote {
-  color: #5392F1;
-}
 
 ul.comment {
   list-style-type: none;

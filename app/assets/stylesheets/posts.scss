@@ -1,5 +1,19 @@
+.post-rank {
+  text-align: center;
+  color: #c6c6c6;
+  font-size: 1.1em;
+  border-width: 1px;
+  float: left;
+  height: 66px;
+  line-height: 66px;
+  padding: .2em;
+  padding-right: .5em;
+}
+
+
+
 .media {
-  color: grey;
+  color: #888;
 
   img {
     position: relative;
@@ -13,13 +27,37 @@
     font-size: medium;
   }
 
-  .info {
-    font-size: x-small;
+  #link-heading {
+
+    a:hover {
+      text-decoration: none;
+    }
+
+    a:visited {
+    color: #593271;
+    transition: 0.5s;
+    }
   }
 
-  .links {
+  .link-base-url {
     font-size: x-small;
+
+    a:visited {
+    color: #888 !important;
+    transition: 0.5s;
+    }
+  }
+
+  .link-info {
+    font-size: x-small;
+    color: inherit;
+  }
+
+  .bottom-links {
+    font-size: 11px;
     font-weight: bold;
+    a {
+      color: inherit;
+    }
   }
-
 }
