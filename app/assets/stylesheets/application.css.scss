@@ -61,8 +61,6 @@ min-height: 100%;
   }
 }
 
-
-
 ul.comment {
   list-style-type: none;
   padding: 0px;
@@ -79,6 +77,7 @@ li {
   margin: 10px 0px 5px 10px;
   padding: 1em .5em .5em 1em;
 }
+
 
 .pagination_button {
   cursor: default;
@@ -109,4 +108,30 @@ li {
   * html .pagination_button {
     height: 1%; }
   *:first-child + html .pagination_button {
-    overflow: hidden; }
+    overflow: hidden;
+  }
+
+
+.submit-new-post {
+  display: inline-block;
+  border-width: thin;
+  background-color: rgb(196, 219, 241);
+  border-style: solid;
+  border-color: #369;
+  text-align: center;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 5px;
+  width: 100%;
+  transition: all 0.5s;
+  cursor: pointer;
+  a {
+    color: #369;
+    }
+    &:hover {
+      background-color: #369;
+      a {
+        color: white;
+      }
+    }
+  }
