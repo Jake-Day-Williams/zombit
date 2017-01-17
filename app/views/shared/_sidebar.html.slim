@@ -4,9 +4,9 @@
       .user-panel
         = current_user.username
         br
-        | #{current_user.post_karma} post karma
+        | <strong>#{current_user.post_karma}</strong> post karma
         br
-        | \#{current_user.comment_karma} comment karma
+        | <strong>#{current_user.comment_karma}</strong> comment karma
       = link_to 'logout', destroy_user_session_path, :method => :delete 
     .panel-body
       .user-body
@@ -15,9 +15,7 @@
             = link_to "Submit new post", new_post_path 
   - else
    .panel-heading
-     ' Want to join? 
-     = link_to 'Sign Up', new_user_registration_path
-     '  in seconds.
+     | Want to join? #{link_to 'Sign Up', new_user_registration_path} in seconds.
    .panel-body
      .form
        .form-group-sm          

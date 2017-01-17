@@ -6,5 +6,5 @@ class Post < ApplicationRecord
   def all_comments
     Comment.where(root_post_id: id)
   end
-    
+
 end

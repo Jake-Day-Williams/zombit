@@ -1,14 +1,18 @@
 li
-  | #{comment.user.username} #{time_ago_in_words(comment.created_at)} ago
-  br
-  = comment.body
-  .info
-  - if user_signed_in?
-    .reply-button
-      | reply  
-    .reply-form
-      = form_for [comment, Comment.new] do |f|
-        = f.text_area :body
-        = f.submit "save"
+  .vote-box 
+    = render "shared/votebox", item: comment
+  .media
+    .link-info
+      | <strong>#{comment.user.username}</strong> #{pluralize(comment.cached_votes_score, 'point')} #{time_ago_in_words(comment.created_at)} ago
+      br
+    = comment.body
+    .bottom-links
+      - if user_signed_in?
+        .reply-button
+          | reply  
+        .reply-form
+          = form_for [comment, Comment.new] do |f|
+            = f.text_area :body
+            = f.submit "save"
   ul.comment
       = render partial: 'comments/comment', collection: comment.comments
