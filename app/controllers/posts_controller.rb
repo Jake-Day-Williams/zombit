@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  include VotingController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :find_post, only: [:show, :edit, :update, :destroy]
 
@@ -37,36 +38,6 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
-    redirect_back(fallback_location: root_path)
-  end
-
-  def upvote
-    @post = Post.find(params[:id])
-    if current_user.voted_down_on? @post
-      @post.user.increment!(:post_karma, 2)
-      @post.liked_by current_user
-    elsif current_user.voted_up_on? @post
-      @post.unliked_by current_user
-      @post.user.decrement!(:post_karma)
-    else
-      @post.liked_by current_user
-      @post.user.increment!(:post_karma)
-    end
-    redirect_back(fallback_location: root_path)
-  end
-
-  def downvote
-    @post = Post.find(params[:id])
-    if current_user.voted_up_on? @post
-      @post.user.decrement!(:post_karma, 2)
-      @post.disliked_by current_user
-    elsif current_user.voted_down_on? @post
-      @post.undisliked_by current_user
-      @post.user.increment!(:post_karma)
-    else
-      @post.disliked_by current_user
-      @post.user.decrement!(:post_karma)
-    end
     redirect_back(fallback_location: root_path)
   end
 
