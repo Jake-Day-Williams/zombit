@@ -1,7 +1,6 @@
 class PostsController < ApplicationController
-  include VotingController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :find_post, only: [:show, :edit, :update, :destroy]
+  before_action :find_post, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
 
   def index
     sorted_posts = Post.all.order(cached_votes_score: :desc)
@@ -38,6 +37,16 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
+    redirect_back(fallback_location: root_path)
+  end
+
+  def upvote
+    VoteAction.upvote(current_user, @post)
+    redirect_back(fallback_location: root_path)
+  end
+
+  def downvote
+    VoteAction.downvote(current_user, @post)
     redirect_back(fallback_location: root_path)
   end
 

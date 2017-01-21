@@ -1,5 +1,5 @@
 .vote-box 
-  = render "shared/votebox", item: post
+  = render "shared/votebox", item: post, voter: current_user
 .media
   .media-left
     - if post.url?

@@ -1,12 +1,11 @@
 class CommentsController < ApplicationController
-  include VotingController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :find_commentable
 
 
   def new
     @comment = Comment.new
-  end
+  end 
 
   def create
     @comment = @commentable.comments.new comment_params
@@ -31,6 +30,14 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+  end
+
+  def upvote
+    VoteAction.upvote(voter, item)
+  end
+
+  def downvote
+    VoteAction.downvote(voter, item)
   end
 
   private

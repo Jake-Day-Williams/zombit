@@ -1,5 +1,5 @@
 - if user_signed_in?
-  - if current_user.voted_up_on? item
+  - if voter.voted_up_on? item
     = link_to send("like_#{item.class.to_s.underscore()}_path", item), method: :put, remote: true, class: "glyphicon glyphicon-chevron-up up-vote" do
   - else
     = link_to send("like_#{item.class.to_s.underscore()}_path", item), method: :put, class: "glyphicon glyphicon-chevron-up no-vote" do
@@ -7,7 +7,7 @@
   - if item.is_a? Post
     = item.cached_votes_score
     br
-  - if current_user.voted_down_on? item
+  - if voter.voted_down_on? item
     = link_to send("dislike_#{item.class.to_s.underscore()}_path", item), method: :put, class: "glyphicon glyphicon-chevron-down down-vote" do 
   - else
     = link_to send("dislike_#{item.class.to_s.underscore()}_path", item), method: :put, class: "glyphicon glyphicon-chevron-down no-vote" do
@@ -18,6 +18,4 @@
   - if item.is_a? Post
     = item.cached_votes_score
     br
-  = link_to new_user_registration_path, class: "glyphicon glyphicon-chevron-down no-vote" do  
-
-/ send("like_#{item.class.to_s.underscore()}_path", item)
+  = link_to new_user_registration_path, class: "glyphicon glyphicon-chevron-down no-vote" do

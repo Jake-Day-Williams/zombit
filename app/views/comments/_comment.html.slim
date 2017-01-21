@@ -1,6 +1,6 @@
 li
   .vote-box 
-    = render "shared/votebox", item: comment
+    = render "shared/votebox", item: comment, voter: current_user
   .media
     .link-info
       | <strong>#{comment.user.username}</strong> #{pluralize(comment.cached_votes_score, 'point')} #{time_ago_in_words(comment.created_at)} ago
