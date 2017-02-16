@@ -43,7 +43,7 @@ Text posts when clicked will take the user to the posts comment page with the bo
 
 When generating our model we'll want to include attributes for both types.
 <pre><code class="language-bash">$ rails generate model Post title:string url:string body:text</code></pre>
-This will generate model and migration files for Post.
+This will generate a model and migration files for Post.
 
 Let's migrate.
 <pre><code class="language-bash">$ rake db:migrate</code></pre>
@@ -105,7 +105,7 @@ Require Bootstrap Javascripts in app/assets/javascripts/application.js
 
 Restart your rails server and visit localhost:3000. You should see the font style change. You're good to go.
 
-<h3>Creating a New Post</h3>
+<h5>Creating a New Post</h5>
 Let's create methods for the creating a new post in the post controller.
 <pre><code class="language-ruby">class PostsController < ApplicationController
 
@@ -183,17 +183,5 @@ Open index.html.haml and add a do loop that will display each post.
     h4.media-heading Top aligned media
     p Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
     p Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-
-
-
-
-
-
-
-
-
-
-
-
 
 ds

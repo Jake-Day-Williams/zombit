@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
 
   def new
     @comment = Comment.new
-  end 
+  end
 
   def create
     @comment = @commentable.comments.new comment_params
@@ -24,6 +24,7 @@ class CommentsController < ApplicationController
   end
 
   def edit
+    
   end
 
   def update
