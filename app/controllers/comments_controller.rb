@@ -2,7 +2,6 @@ class CommentsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :find_commentable
 
-
   def new
     @comment = Comment.new
   end
@@ -34,11 +33,15 @@ class CommentsController < ApplicationController
   end
 
   def upvote
-    VoteAction.upvote(voter, item)
+    @comment = Comment.find(params[:id])
+    VoteAction.upvote(current_user, @comment)
+    redirect_back(fallback_location: root_path)
   end
 
   def downvote
-    VoteAction.downvote(voter, item)
+    @comment = Comment.find(params[:id])
+    VoteAction.downvote(current_user, @comment)
+    redirect_back(fallback_location: root_path)
   end
 
   private
