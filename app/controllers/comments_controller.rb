@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :find_commentable
+  before_action :set_comment, only: [:edit, :update, :destroy, :upvote, :downvote]
 
   def new
     @comment = Comment.new
@@ -23,23 +24,25 @@ class CommentsController < ApplicationController
   end
 
   def edit
-
   end
 
   def update
   end
 
   def destroy
+    @comment[:body] = "[deleted]"
+    @comment[:user_id] = nil
+    if @comment.save
+      redirect_to :back, notice: "Comment removed."
+    end
   end
 
   def upvote
-    @comment = Comment.find(params[:id])
     VoteAction.upvote(current_user, @comment)
     redirect_back(fallback_location: root_path)
   end
 
   def downvote
-    @comment = Comment.find(params[:id])
     VoteAction.downvote(current_user, @comment)
     redirect_back(fallback_location: root_path)
   end
@@ -55,4 +58,9 @@ class CommentsController < ApplicationController
     @commentable = Comment.find_by_id(params[:comment_id]) if params[:comment_id]
     @commentable = Post.find_by_id(params[:post_id]) if params[:post_id]
   end
+
+  def set_comment
+    @comment = Comment.find(params[:id])
+  end
+
 end
