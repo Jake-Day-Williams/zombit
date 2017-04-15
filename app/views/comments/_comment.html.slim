@@ -17,8 +17,9 @@ li
           = form_for [comment, Comment.new] do |f|
             = f.text_area :body
             = f.submit "save"
-        - if comment.user.email == current_user.email
-          = link_to "delete", [@commentable, comment], method: :delete, data: { confirm: 'Really delete'}
+        .delete-button
+          - if comment.user.email == current_user.email
+            = link_to "delete", [@commentable, comment], method: :delete, data: { confirm: 'Really delete'}
   ul.comment
       = render partial: 'comments/comment', collection: comment.comments
       

@@ -66,8 +66,14 @@ ul.comment {
   padding: 0px;
 }
 
+.delete-button {
+  display:inline;
+  cursor: pointer;
+}
+
 .reply-button {
   cursor: pointer;
+  display:inline;
 }
 
 li {
