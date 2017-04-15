@@ -11,16 +11,17 @@ Intent: Rebuild all functionality of the popular site reddit.com using Ruby on R
 ## Want to contribute?
 Here's some todo's off the top of my head. Add them as you think of them.
 
-* Add dashed box around the post you last clicked on when returning to the page.
-* Add subreddits (subbits?)
+* Add dashed box around the post you last clicked on when returning to the post index page.
+* Add subreddits (called subbits maybe?)
 * Signing in on the signup page causes a redirect error.
+* Ability to edit a comment.
 * A user needs a "posts" button to click where they can see all their posts.
-* A user needs a "comments" button to click where they can see all their posts.
-* The comment reply box types bold characters.
+* A user needs a "comments" button to click where they can see all the comments they've made.
+* Notify a user of comment replies.
+* Links in comments need to be clickable.
 * Add markdown for comments and posts bodies: With this gem: https://github.com/vmg/redcarpet
-* "Post submitted successfully" needs to disappear after a few seconds.
-* "Comment submitted successfully" needs to disappear after a few seconds.
+* "Post submitted successfully" flash needs to disappear after a few seconds.
+* "Comment submitted successfully" flash needs to disappear after a few seconds.
 * Sort comments by most popular and newest.
 * Tests. Tests. Tests.
-
-ADD MORE TODOs (There's lots.)
+* Add more to dos that you notice need to be done to this readme list. (There's lots.)
